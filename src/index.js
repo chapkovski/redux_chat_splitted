@@ -9,7 +9,7 @@ import rootReducer from "./reducers";
 import HistoryContainer from "./containers/historycontainer";
 import ChatContainer from "./containers/addchatcontainer";
 import ClearHistory from "./containers/clearhistorycontainer";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+
 const initialState = { history: ["x", "y"] };
 const store = createStore(rootReducer, initialState);
 
@@ -20,10 +20,9 @@ function App() {
   };
   return (
     <div>
-      <ButtonGroup>
+     
         <ChatContainer />
-        <ClearHistory />
-      </ButtonGroup>
+   
       <HistoryContainer />
     </div>
   );
