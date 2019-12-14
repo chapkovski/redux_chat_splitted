@@ -10,19 +10,19 @@ import HistoryContainer from "./containers/historycontainer";
 import ChatContainer from "./containers/addchatcontainer";
 import ClearHistory from "./containers/clearhistorycontainer";
 
-const initialState = { history: ["x", "y"] };
-const store = createStore(rootReducer, initialState);
+const initialState = { history: [{id:0, text:'jopa'}] };
+const store = createStore(
+  rootReducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 function App() {
-  const [history, setHistory] = React.useState(["a", "b"]);
-  const clickHandler = val => {
-    setHistory(state => [val, ...state]);
-  };
+  
   return (
     <div>
-     
-        <ChatContainer />
-   
+      <ChatContainer />
+
       <HistoryContainer />
     </div>
   );

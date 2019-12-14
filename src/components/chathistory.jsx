@@ -7,7 +7,7 @@ const ChatHistory = ({ history }) => {
   return (
     <List>
       {history.map((rec, ind) => (
-        <Rec text={rec}  key={ind}/>
+        <Rec text={rec.text}  key={ind}/>
       ))}
     </List>
   );
