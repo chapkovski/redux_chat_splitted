@@ -10,7 +10,7 @@ import HistoryContainer from "./containers/historycontainer";
 import ChatContainer from "./containers/addchatcontainer";
 import ClearHistory from "./containers/clearhistorycontainer";
 
-const initialState = { history: [{id:0, text:'jopa'}] };
+const initialState = { history: [{ id: 0, text: "jopa" }] };
 const store = createStore(
   rootReducer,
   initialState,
@@ -18,7 +18,6 @@ const store = createStore(
 );
 
 function App() {
-  
   return (
     <div>
       <ChatContainer />
