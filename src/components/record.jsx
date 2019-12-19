@@ -8,8 +8,8 @@ const ChatRecord = ({ text, id, deletion }) => {
   return (
     <ListItem>
       <ListItemText primary={text} />
-      <IconButton color="secondary" aria-label="clear" component="span">
-        <ClearIcon onClick={() => deletion(id)} />
+      <IconButton onClick={() => deletion(id)} color="secondary" aria-label="clear" component="span">
+        <ClearIcon  />
       </IconButton>
     </ListItem>
   );

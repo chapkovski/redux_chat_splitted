@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
-import { addChatRecord,clearHistory } from "../actions";
+import { addChatRecord, clearHistory, setEmail } from "../actions";
 import AddRecord from "../components/addRecord";
 
 const mapDispatchToProps = dispatch => ({
   addChatRecord: val => dispatch(addChatRecord(val)),
-  clearHistory: ()=> dispatch(clearHistory())
+  clearHistory: () => dispatch(clearHistory()),
+  setEmail: val => dispatch(setEmail(val))
 });
 
 export default connect(
