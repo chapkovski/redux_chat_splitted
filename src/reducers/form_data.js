@@ -1,4 +1,3 @@
-
 const form_data = (state = {}, action) => {
   switch (action.type) {
     case "SET_FORM_INPUT":

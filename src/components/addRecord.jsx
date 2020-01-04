@@ -6,7 +6,7 @@ const AllowedFormFields = ["email", "comment"];
 
 const dispatchToForm = (text, setFormInput) => {
   const procstr = text.split(":");
-  if (procstr.length == 2) {
+  if (procstr.length === 2) {
     const [input_name, value] = procstr;
     if (AllowedFormFields.includes(input_name)) {
       setFormInput(input_name, value.trim());

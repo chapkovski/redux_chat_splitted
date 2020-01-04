@@ -25,7 +25,7 @@ export default function ImgMediaCard() {
           <Typography gutterBottom variant="h5" component="h2">
             Instructions:
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="div">
             <div>You can send events to chat by changing form fields below.             </div>
             <div>You can type in chat window something like <code>email:chapkovski@gmail.com</code>           or <code>comment:hello!</code> to set form fields. </div>
           </Typography>
