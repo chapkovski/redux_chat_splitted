@@ -12,8 +12,8 @@ export const changeModalVisibility = visible => ({
   type: "SET_MODAL",
   visible: visible
 });
-export const addChatRecord = text => ({
+export const addChatRecord = message => ({
   type: "ADD_CHAT_RECORD",
   id: chatId++,
-  text
+  message: message
 });

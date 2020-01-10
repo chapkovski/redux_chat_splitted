@@ -11,28 +11,22 @@ import InfoCard from "./components/infocard";
 import HistoryContainer from "./containers/historycontainer";
 import Modal from "./containers/modal";
 import ChatContainer from "./containers/addchatcontainer";
-import { Divider, Grid, Paper } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { loadState, saveState } from "./localStorage";
+import logger from "./reduxLogger";
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: "10px"
-  }
+  },
+  chatcontainer: { height: "100%" }
 }));
 
-const logger = store => next => action => {
-  let result = next(action);
-  if (action.type === "ADD_CHAT_RECORD" || action.type === "SET_FORM_INPUT") {
-    saveState(store.getState());
-  }
-  return result;
-};
 // const persistedState = loadState();
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistedState = {
   // history: [{ id: 0, text: "jopa" }],
   // form_data:{email:'asdf@asdf.ru'},
-  modal_status: true
+  modal_status: false
 };
 const store = createStore(
   rootReducer,
@@ -46,20 +40,38 @@ function App() {
   return (
     <React.Fragment>
       <Modal />
-      <Grid container spacing={3}>
+
+      <Grid
+        container
+        style={{ minHeight: "100vh" }}
+        direction="column"
+        alignItems="stretch"
+      >
         <Grid item xs={12}>
           <InfoCard />
         </Grid>
         <Grid item xs={12}>
-          <Paper>
+          <Box
+            border={1}
+            borderRadius={5}
+            borderColor={"lightgray"}
+            marginTop={1}
+            padding={1}
+          >
             <MainForm />
-          </Paper>
+          </Box>
         </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
+        <Grid item xs={12} style={{ height: "50%" }}>
+          <Box
+            border={1}
+            borderRadius={5}
+            borderColor={"lightgray"}
+            marginTop={1}
+            padding={1}
+          >
             <ChatContainer />
             <HistoryContainer />
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -11,10 +11,8 @@ const appReducer = combineReducers({
 
 
 const rootReducer = (state, action) => {
-  console.log('ACTION', action.type)
   if (action.type === 'LOAD_FROM_STORAGE') {
     state = loadState()
-    console.log('STTE:::', state)
   }
   return appReducer(state, action)
 }

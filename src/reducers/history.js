@@ -7,7 +7,8 @@ const history = (state = [], action) => {
         return o.id !== action.id;
       });
     case "ADD_CHAT_RECORD":
-      return [{ text: action.text, id: action.id }, ...state];
+      console.log('MESSAGE:' , action.message)
+      return [{ ...action.message, id: action.id }, ...state];
     case "CLEAR_CHAT":
       return [];
     default:
