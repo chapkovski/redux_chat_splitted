@@ -17,10 +17,14 @@ const genericMessage = ({
     ...extra
   };
 };
-export const formMessage = ({text, input_name}) => {
+export const formMessage = ({ text, input_name }) => {
   const final_text = input_name + ": " + text;
-  const extra = { form_data: true, form_field_name: input_name };
-  return genericMessage({source:'user', text:final_text, extra:extra});
+  const extra = {
+    form_data: true,
+    form_field_name: input_name,
+    form_field_value: text
+  };
+  return genericMessage({ source: "user", text: final_text, extra: extra });
 };
 export const userMessage = text =>
   genericMessage({ source: "user", text: text });

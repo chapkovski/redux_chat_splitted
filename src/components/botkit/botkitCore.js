@@ -27,7 +27,8 @@ export const processMessageIncoming = ({ message }) => {
 
 export const processMessageOutgoing = message => {
   // if there is an outgoing message we send it to bot
-  const outmessage = { user: userId, text: message.text, type: "message" };
+  const outmessage = { user: userId,  type: "message" , ...message};
+  console.log('OUTMESSAGE::', outmessage)
   botkit.send(JSON.stringify(outmessage));
 };
 const botkit = Botkit(
