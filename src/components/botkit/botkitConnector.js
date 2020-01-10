@@ -15,10 +15,8 @@ function Botkit(config, handleIncoming, handleOutgoing) {
   };
 
   socketConnection.onmessage = message => {
-    console.log("GOTMESSAGE!", message);
     const messageData = JSON.parse(message.data);
-    console.log('MESSAGE DATA', messageData)
-    handleIncoming({message:messageData});
+    handleIncoming({ message: messageData });
   };
 
   return socketConnection;

@@ -2,7 +2,7 @@ import Botkit from "./botkitConnector";
 import { connect } from "react-redux";
 import moment from "moment";
 import { store } from "../../index";
-import { addChatRecord } from "../../actions";
+import { addChatRecord, setFormInput } from "../../actions";
 import { botMessage } from "../chat/structures";
 const userId = "123";
 const botkitConfig = {
@@ -22,6 +22,9 @@ export const processMessageIncoming = ({ message }) => {
 
   if (message) {
     store.dispatch(addChatRecord(inmessage));
+  }
+  if (message.set_form_field) {
+    store.dispatch(setFormInput(message.form_field_name, message.form_field_value));
   }
 };
 

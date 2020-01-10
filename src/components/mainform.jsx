@@ -1,5 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import { store } from "../index";
 
 const MainForm = ({ form_data, logFormChange, setFormInput }) => {
   const emailinputref = React.useRef(null);
@@ -8,11 +9,11 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
     const input_name = e.target.name;
     const value = e.target.value;
     if (value.trim()) {
-    setFormInput(input_name, value);
-    if (e.key === "Enter") {
-      logFormChange(input_name, value);
+      setFormInput(input_name, value);
+      if (e.key === "Enter") {
+        logFormChange(input_name, value);
+      }
     }
-  }
   };
   const focusLost = (input_name, value) => {
     if (value.trim()) {
