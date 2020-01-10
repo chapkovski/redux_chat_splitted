@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import moment from 'moment'
+import moment from "moment";
 const AllowedFormFields = ["email", "comment"];
 
 const dispatchToForm = (text, setFormInput) => {
@@ -23,12 +23,14 @@ const AddDeleteRecord = ({ addChatRecord, clearHistory, setFormInput }) => {
   };
   const dealWith = e => {
     if (input.current.value.trim()) {
-const m = moment().format('HH:mm:ss')
+      const m = moment().format("HH:mm:ss");
 
-const message = {input_type:'message',
-source:'user', 
-text:input.current.value,
-timestamp:m}
+      const message = {
+        input_type: "message",
+        source: "user",
+        text: input.current.value,
+        timestamp: m
+      };
       addChatRecord(message);
     }
     dispatchToForm(input.current.value, setFormInput);
@@ -46,7 +48,7 @@ timestamp:m}
       />
       <ButtonGroup aria-label="outlined primary button group">
         <Button color="primary" onClick={dealWith}>
-          Send to chat 
+          Send to chat
         </Button>
         <Button color="secondary" onClick={clearHistory}>
           Clear history

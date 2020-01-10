@@ -1,5 +1,6 @@
 import Botkit from "./botkitConnector";
 import { connect } from "react-redux";
+import moment from "moment";
 import { store } from "../../index";
 import { addChatRecord } from "../../actions";
 const userId = "123";
@@ -18,10 +19,16 @@ const botkitConfig = {
 export const processMessageIncoming = ({ message }) => {
   // if there is a message from bot, we add record to history
   console.log("message incoming:", message);
-  const inmessage = {source:'bot', text:message.text, timestamp:'10:00'}
-  // if (message) {
-  //   store.dispatch(addChatRecord(message));
-  // }
+  const m = moment().format("HH:mm:ss");
+  const inmessage = {
+    input_type: "message",
+    source: "bot",
+    text: message.text,
+    timestamp: m
+  };
+  if (message) {
+    store.dispatch(addChatRecord(inmessage));
+  }
 };
 
 export const processMessageOutgoing = message => {
