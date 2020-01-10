@@ -1,22 +1,15 @@
 import { connect } from "react-redux";
 import { addChatRecord, setFormInput } from "../actions";
 import MainForm from "../components/mainform";
-import moment from "moment";
+import { formMessage } from "../components/chat/structures";
 const mapStateToProps = (state, ownProps) => ({
   form_data: state.form_data
 });
 
 const mapDispatchToProps = dispatch => ({
   logFormChange: (input_name, val) => {
-    const m = moment().format("HH:mm:ss");
-
-    const message = {
-      input_type: "message",
-      source: "user",
-      text: input_name+":"+val,
-      timestamp: m
-    };
-    return dispatch(addChatRecord(message));
+    const form_message = formMessage({ input_name: input_name, text: val });
+    return dispatch(addChatRecord(form_message));
   },
   setFormInput: (input_name, val) => dispatch(setFormInput(input_name, val))
 });

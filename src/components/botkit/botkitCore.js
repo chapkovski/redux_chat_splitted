@@ -12,15 +12,14 @@ const botkitConfig = {
     user: userId,
     welcomeMessage: true,
     channel: "socket",
-    text:'jopa'
   },
   userId: userId
 };
 
 export const processMessageIncoming = ({ message }) => {
   // if there is a message from bot, we add record to history
-  const inmessage = botMessage(message.text)
-  
+  const inmessage = botMessage(message.text);
+
   if (message) {
     store.dispatch(addChatRecord(inmessage));
   }
@@ -29,7 +28,6 @@ export const processMessageIncoming = ({ message }) => {
 export const processMessageOutgoing = message => {
   // if there is an outgoing message we send it to bot
   const outmessage = { user: userId, text: message.text, type: "message" };
-  console.log("message outgoing:", outmessage);
   botkit.send(JSON.stringify(outmessage));
 };
 const botkit = Botkit(
