@@ -1,6 +1,8 @@
 import Botkit from "./botkitConnector";
 import { connect } from "react-redux";
-import { addChatRecord } from "../actions";
+import { store } from "../../index";
+import { addChatRecord } from "../../actions";
+const userId = "123";
 const botkitConfig = {
   ws_url: "ws://localhost:3000/",
   msgOnSocketOpen: {
@@ -8,33 +10,28 @@ const botkitConfig = {
     user: userId,
     welcomeMessage: true,
     channel: "socket",
-    user_profile: null
+    text:'jopa'
   },
   userId: userId
 };
 
-const mapDispatchToProps = dispatch => ({
-  addChatRecord: val => dispatch(addChatRecord(val))
-});
-
-const _processMessageIncoming = ({ message, addChatRecord }) => {
+export const processMessageIncoming = ({ message }) => {
   // if there is a message from bot, we add record to history
   console.log("message incoming:", message);
-  addChatRecord(message);
+  const inmessage = {source:'bot', text:message.text, timestamp:'10:00'}
+  // if (message) {
+  //   store.dispatch(addChatRecord(message));
+  // }
 };
-export const processMessageIncoming = connect(
-  null,
-  mapDispatchToProps
-)(_processMessageIncoming);
 
-export const processMessageOutgoing = (message) => {
+export const processMessageOutgoing = message => {
   // if there is an outgoing message we send it to bot
-  
-  botkit.send(JSON.stringify(message));
+  const outmessage = { user: userId, text: message.text, type: "message" };
+  console.log("message outgoing:", outmessage);
+  botkit.send(JSON.stringify(outmessage));
 };
 const botkit = Botkit(
   botkitConfig,
   processMessageIncoming,
   processMessageOutgoing
 );
-export default botkit;

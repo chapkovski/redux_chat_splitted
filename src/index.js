@@ -28,12 +28,12 @@ const persistedState = {
   // form_data:{email:'asdf@asdf.ru'},
   modal_status: false
 };
-const store = createStore(
+export const store = createStore(
   rootReducer,
   persistedState,
   composeEnhancer(applyMiddleware(logger))
 );
-console.log(store);
+
 function App() {
   const classes = useStyles();
 

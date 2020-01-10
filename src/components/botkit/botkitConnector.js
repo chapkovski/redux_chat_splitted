@@ -1,10 +1,6 @@
-import  { useState } from "react";
-
 function Botkit(config, handleIncoming, handleOutgoing) {
-  const [socketConnection, setSocketConnection] = useState(
-    new WebSocket(config.ws_url)
-  );
-
+  const socketConnection = new WebSocket(config.ws_url);
+  console.log("HANDLE INCOMING", handleIncoming);
   socketConnection.onopen = () => {
     socketConnection.send(JSON.stringify(config.msgOnSocketOpen));
     console.log("Botkit socket open");
@@ -19,8 +15,10 @@ function Botkit(config, handleIncoming, handleOutgoing) {
   };
 
   socketConnection.onmessage = message => {
+    console.log("GOTMESSAGE!", message);
     const messageData = JSON.parse(message.data);
-    handleIncoming(messageData);
+    console.log('MESSAGE DATA', messageData)
+    handleIncoming({message:messageData});
   };
 
   return socketConnection;
