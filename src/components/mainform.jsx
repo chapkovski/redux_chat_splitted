@@ -7,14 +7,18 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
   const enterPressed = e => {
     const input_name = e.target.name;
     const value = e.target.value;
+    if (value.trim()) {
     setFormInput(input_name, value);
     if (e.key === "Enter") {
       logFormChange(input_name, value);
     }
+  }
   };
   const focusLost = (input_name, value) => {
-    setFormInput(input_name, value);
-    logFormChange(input_name, value);
+    if (value.trim()) {
+      setFormInput(input_name, value);
+      logFormChange(input_name, value);
+    }
   };
   const handleInputChange = (input_name, value) => {
     setFormInput(input_name, value);
@@ -23,7 +27,7 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
     <React.Fragment>
       <TextField
         inputRef={emailinputref}
-        name='email'
+        name="email"
         onKeyPress={enterPressed}
         onChange={e => handleInputChange("email", e.target.value)}
         onBlur={e => focusLost("email", e.target.value)}
@@ -41,7 +45,7 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
       />
       <TextField
         inputRef={commentInputref}
-        name='comment'
+        name="comment"
         onChange={e => handleInputChange("comment", e.target.value)}
         onKeyPress={enterPressed}
         onBlur={e => focusLost("comment", e.target.value)}
