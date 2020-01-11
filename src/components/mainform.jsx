@@ -1,10 +1,9 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { store } from "../index";
+
+import UniField from "./fieldComp";
 
 const MainForm = ({ form_data, logFormChange, setFormInput }) => {
-  const emailinputref = React.useRef(null);
-  const commentInputref = React.useRef(null);
   const enterPressed = e => {
     const input_name = e.target.name;
     const value = e.target.value;
@@ -26,41 +25,38 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
   };
   return (
     <React.Fragment>
-      <TextField
-        inputRef={emailinputref}
-        name="email"
-        onKeyPress={enterPressed}
-        onChange={e => handleInputChange("email", e.target.value)}
-        onBlur={e => focusLost("email", e.target.value)}
-        value={form_data.email}
-        id="standard-full-width"
-        label="email"
-        style={{ margin: 8 }}
-        placeholder="chapkovski@gmail.com"
-        helperText="Enter email and click enter"
-        fullWidth
-        margin="normal"
-        InputLabelProps={{
-          shrink: true
-        }}
+      <UniField
+        name="age"
+        handleInputChange={handleInputChange}
+        enterPressed={enterPressed}
+        focusLost={focusLost}
+        placeholder="18"
+        helperText="please enter your age from 18 to 100"
       />
-      <TextField
-        inputRef={commentInputref}
-        name="comment"
-        onChange={e => handleInputChange("comment", e.target.value)}
-        onKeyPress={enterPressed}
-        onBlur={e => focusLost("comment", e.target.value)}
-        value={form_data.comment}
-        id="standard-full-width"
-        label="comment"
-        style={{ margin: 8 }}
-        placeholder="Some comment"
-        helperText="Enter comment here and click enter"
-        fullWidth
-        margin="normal"
-        InputLabelProps={{
-          shrink: true
-        }}
+     
+     <UniField
+        name="income"
+        handleInputChange={handleInputChange}
+        enterPressed={enterPressed}
+        focusLost={focusLost}
+        placeholder="10000"
+        helperText="please enter how much you earn per month"
+      />
+       <UniField
+        name="name"
+        handleInputChange={handleInputChange}
+        enterPressed={enterPressed}
+        focusLost={focusLost}
+        placeholder="Philipp"
+        helperText="What is your name?"
+      />
+       <UniField
+        name="PLZ"
+        handleInputChange={handleInputChange}
+        enterPressed={enterPressed}
+        focusLost={focusLost}
+        placeholder="8001"
+        helperText="PLZ of your address"
       />
     </React.Fragment>
   );

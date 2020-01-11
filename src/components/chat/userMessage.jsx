@@ -17,18 +17,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function GenericMessage({ message }) {
   const classes = useStyles();
-  console.log("INNER", message)
   return (
     <React.Fragment>
-      <Grid container alignItems="flex-end"  justify="flex-end">
-
+      <Grid container alignItems="flex-end" justify="flex-end">
         <Grid item>
           <Box border={1} borderRadius={16} className={classes.rootBox}>
             {message.text}
           </Box>
         </Grid>
         <Grid item>
-          <TimeStamp timestamp={message.timestamp}/>
+          <TimeStamp timestamp={message.timestamp} />
         </Grid>
       </Grid>
     </React.Fragment>

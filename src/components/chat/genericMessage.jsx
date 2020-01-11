@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function GenericMessage({ message }) {
   const classes = useStyles();
-  console.log('INNER GENERIC', message)
   const MessageContainer = message.source === "user" ? UserMessage : BotMessage;
   return (
     <React.Fragment>

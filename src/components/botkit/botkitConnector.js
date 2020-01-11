@@ -1,6 +1,5 @@
 function Botkit(config, handleIncoming, handleOutgoing) {
   const socketConnection = new WebSocket(config.ws_url);
-  console.log("HANDLE INCOMING", handleIncoming);
   socketConnection.onopen = () => {
     socketConnection.send(JSON.stringify(config.msgOnSocketOpen));
     console.log("Botkit socket open");
@@ -15,7 +14,9 @@ function Botkit(config, handleIncoming, handleOutgoing) {
   };
 
   socketConnection.onmessage = message => {
+
     const messageData = JSON.parse(message.data);
+    console.log('IIIN:', messageData)
     handleIncoming({ message: messageData });
   };
 
