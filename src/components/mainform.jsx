@@ -33,8 +33,8 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
         placeholder="18"
         helperText="please enter your age from 18 to 100"
       />
-     
-     <UniField
+
+      <UniField
         name="income"
         handleInputChange={handleInputChange}
         enterPressed={enterPressed}
@@ -42,7 +42,7 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
         placeholder="10000"
         helperText="please enter how much you earn per month"
       />
-       <UniField
+      <UniField
         name="name"
         handleInputChange={handleInputChange}
         enterPressed={enterPressed}
@@ -50,8 +50,8 @@ const MainForm = ({ form_data, logFormChange, setFormInput }) => {
         placeholder="Philipp"
         helperText="What is your name?"
       />
-       <UniField
-        name="PLZ"
+      <UniField
+        name="plz"
         handleInputChange={handleInputChange}
         enterPressed={enterPressed}
         focusLost={focusLost}
